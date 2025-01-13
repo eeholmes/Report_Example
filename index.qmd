@@ -1,6 +1,7 @@
+
 # Citation {.unnumbered}
 
-EE Holmes, 2022. Quarto Report Template. Northwest Fisheries Science Center.
+Gordon, R., McCordic, J. A., VanParjis, S. M., year. AMP Report. Northeast Fisheries Science Center.
 
 
 ```{=openxml}
