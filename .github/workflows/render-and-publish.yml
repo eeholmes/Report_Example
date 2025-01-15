@@ -28,7 +28,14 @@ jobs:
         with:
           # To install LaTeX to build PDF book 
           tinytex: true 
+  # if any packages have been installed, update packages first
+  if (getOption('tinytex.tlmgr_update', TRUE) && any(check_installed(pkgs))) update_pkgs()
 
+  res = tlmgr(c('install', pkgs), usermode, ...)
+  if (res != 0 || any(!check_installed(pkgs))) {
+    update_pkgs(all = FALSE) 
+    res = tlmgr(c('install', pkgs), usermode, ...)
+  }
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
         with:
