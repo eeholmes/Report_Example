@@ -17,8 +17,8 @@ jobs:
       - name: Install remotes; needed for next line
         run: Rscript -e 'install.packages(c("remotes"))'
         
-#      - name: Install gt; no binary on cran
-#        run: Rscript -e 'install.packages(c("gt", "devtools", "knitr", "rmarkdown", "ggplot2", "here"))'
+      - name: Install gt; no binary on cran
+        run: Rscript -e 'install.packages(c("gt", "devtools", "knitr", "rmarkdown", "ggplot2", "here"))'
 
       - name: Install packages (needed for Rmd)
         run: Rscript -e 'remotes::install_deps(quiet = TRUE, upgrade="never", build=FALSE)'
@@ -28,7 +28,8 @@ jobs:
         with:
           # To install LaTeX to build PDF book 
           tinytex: true 
-
+          run: tinytex::tlmgr_update()
+          
       - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
         with:
