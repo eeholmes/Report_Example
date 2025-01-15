@@ -30,7 +30,7 @@ jobs:
           tinytex: true 
           
       - name: Update R packages
-        run: update.packages(ask = FALSE, checkBuilt = TRUE)
+        run: update.packages(checkBuilt = TRUE)
 
       - name: update tinytex
         run: tinytex::tlmgr_update()
